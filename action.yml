@@ -11,6 +11,15 @@ inputs:
   runners:
     description: 'Comma-separated list of step ids'
     required: true
+  outputFile:
+    description: >
+      outputFile used by custom script to compare and get grade.
+    required: true
+    default: output.txt
+  scriptPath:
+    description: >
+      default scripts path
+    default: .github/classroom
 
 runs:
   using: "node20"
