@@ -18,10 +18,11 @@ exports.NotifyClassroom = async function NotifyClassroom(runnerResults) {
     { totalPoints: 0, maxPoints: 0 }
   );
   if (!maxPoints) return;
-
+  
   // Our action will need to API access the repository so we require a token
   // This will need to be set in the calling workflow, otherwise we'll exit
   const token = process.env.GITHUB_TOKEN || core.getInput("token");
+  console.log(`Token: ${token}`);
   if (!token || token === "") return;
 
   // Create the octokit client
