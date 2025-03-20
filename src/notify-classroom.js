@@ -63,7 +63,7 @@ exports.NotifyClassroom = async function NotifyClassroom(runnerResults) {
 
   // Filter to find the check run named "Autograding Tests" for the specific workflow run ID
   const checkRun = checkRunsResponse.data.total_count === 1 && checkRunsResponse.data.check_runs[0];
-  console.log(`${checkRunsResponse.data.total_count}, and ${checkRunsResponse.data.check_runs[0]}`);
+  console.log(`${checkRunsResponse}, and ${checkRunsResponse.data.check_runs[0]}`);
   if (!checkRun) return;
   console.log(`out`);
   // Update the checkrun, we'll assign the title, summary and text even though we expect
