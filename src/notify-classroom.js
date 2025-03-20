@@ -65,7 +65,7 @@ exports.NotifyClassroom = async function NotifyClassroom(runnerResults) {
   const checkRun = checkRunsResponse.data.total_count === 1 && checkRunsResponse.data.check_runs[0];
   console.log(`${checkRunsResponse}, and ${checkRunsResponse.data.check_runs[0]}`);
   if (!checkRun) return;
-  console.log(`out`);
+  
   // Update the checkrun, we'll assign the title, summary and text even though we expect
   // the title and summary to be overwritten by GitHub Actions (they are required in this call)
   // We'll also store the total in an annotation to future-proof
@@ -92,4 +92,5 @@ exports.NotifyClassroom = async function NotifyClassroom(runnerResults) {
       ],
     },
   });
+  console.log(`out`);
 };
