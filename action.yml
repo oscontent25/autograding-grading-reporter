@@ -14,11 +14,4 @@ inputs:
 
 runs:
   using: "node20"
-  shell: bash
-  main: |
-    # Run esbuild to bundle and minify the JavaScript
-    npx esbuild src/main.js --bundle --minify --platform=node --outfile=dist/main.js
-
-    # Run the autograding script
-    node dist/main.js
-
+  main: "dist/main.js"
