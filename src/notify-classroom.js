@@ -60,7 +60,7 @@ exports.NotifyClassroom = async function NotifyClassroom(runnerResults) {
     check_name: "run-autograding-tests",
     check_suite_id: checkSuiteId,
   });
-  
+  console.log(`hello`);
   // Filter to find the check run named "Autograding Tests" for the specific workflow run ID
   const checkRun = checkRunsResponse.data.total_count === 1 && checkRunsResponse.data.check_runs[0];
   console.log(JSON.stringify(checkRun, null, 2));
@@ -92,5 +92,4 @@ exports.NotifyClassroom = async function NotifyClassroom(runnerResults) {
       ],
     },
   });
-  console.log(`out`);
 };
