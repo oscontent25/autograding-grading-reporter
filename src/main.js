@@ -14,9 +14,9 @@ try {
 
 
   ConsoleResults(runnerResults);
-  console.log(`goodbye`);
+  
   NotifyClassroom(runnerResults);
-
+  console.log(`goodbye`);
   if (runnerResults.some((r) => r.results.status === "fail")) {
     core.setFailed("Some tests failed.");
   } else if (runnerResults.some((r) => r.results.status === 'error')) {
