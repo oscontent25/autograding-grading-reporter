@@ -14,6 +14,7 @@ try {
 
 
   ConsoleResults(runnerResults);
+  console.log(`goodbye`);
   NotifyClassroom(runnerResults);
 
   if (runnerResults.some((r) => r.results.status === "fail")) {
