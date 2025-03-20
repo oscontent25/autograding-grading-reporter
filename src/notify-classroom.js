@@ -4,6 +4,7 @@ const github = require("@actions/github");
 exports.NotifyClassroom = async function NotifyClassroom(runnerResults) {
   // combine max score and total score from each {runner, results} pair
   // if max_score is greater than 0 run the rest of this code
+  console.log(`hello`);
   const { totalPoints, maxPoints } = runnerResults.reduce(
     (acc, { results }) => {
       if (!results.max_score) return acc;
