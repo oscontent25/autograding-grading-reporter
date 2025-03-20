@@ -12,6 +12,26 @@ inputs:
     description: 'Comma-separated list of step ids'
     required: true
 
-runs:
-  using: "node20"
-  main: "dist/main.js"
+jobs:
+  autograding:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'  # 自动缓存 npm 依赖
+
+      - name: Install dependencies
+        run: npm install --silent
+
+      - name: Build project
+        run: npm run build
+
+      - name: Run Autograder
+        run: node dist/main.js
+        env:
+          GITHUB_TOKEN: ${{ inputs.token }}
+          RUNNERS: ${{ inputs.runners }}
