@@ -30,8 +30,6 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Run Autograder
-        run: node dist/main.js
-        env:
-          GITHUB_TOKEN: ${{ inputs.token }}
-          RUNNERS: ${{ inputs.runners }}
+runs:
+  using: "node20"
+  main: "dist/main.js"
