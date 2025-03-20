@@ -11,26 +11,13 @@ inputs:
   runners:
     description: 'Comma-separated list of step ids'
     required: true
-  outputFile:
-    description: >
-      outputFile used by custom script to compare and get grade.
-    required: true
-    default: output.txt
-  scriptPath:
-    description: >
-      default scripts path
-    default: .github/classroom
-
-
 
 runs:
   using: "node20"
   steps:
-    # 1. First, run esbuild command to bundle and minify the JavaScript
     - name: Run esbuild
       run: npx esbuild src/main.js --bundle --minify --platform=node --outfile=dist/main.js
-
-    # 2. After that, execute the main script
+      
     - name: Run the autograding script
       run: node dist/main.js
 
