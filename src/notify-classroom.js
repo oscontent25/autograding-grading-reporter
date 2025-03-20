@@ -4,7 +4,7 @@ const github = require("@actions/github");
 exports.NotifyClassroom = async function NotifyClassroom(runnerResults) {
   // combine max score and total score from each {runner, results} pair
   // if max_score is greater than 0 run the rest of this code
-  console.log(`hello`);
+  
   const { totalPoints, maxPoints } = runnerResults.reduce(
     (acc, { results }) => {
       if (!results.max_score) return acc;
@@ -23,7 +23,7 @@ exports.NotifyClassroom = async function NotifyClassroom(runnerResults) {
   // Our action will need to API access the repository so we require a token
   // This will need to be set in the calling workflow, otherwise we'll exit
   const token = process.env.GITHUB_TOKEN || core.getInput("token");
-  console.log(`Token: ${token}`);
+
   if (!token || token === "") return;
 
   // Create the octokit client
@@ -70,6 +70,7 @@ exports.NotifyClassroom = async function NotifyClassroom(runnerResults) {
   // the title and summary to be overwritten by GitHub Actions (they are required in this call)
   // We'll also store the total in an annotation to future-proof
   const text = `Points ${totalPoints}/${maxPoints}`;
+  console.log(`hello`);
   await octokit.rest.checks.update({
     owner,
     repo,
