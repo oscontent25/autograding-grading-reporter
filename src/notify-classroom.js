@@ -37,11 +37,11 @@ exports.NotifyClassroom = async function NotifyClassroom(runnerResults) {
   const [owner, repo] = nwo.split("/");
   if (!owner) return;
   if (!repo) return;
-
+  console.log(`1`);
   // We need the workflow run id
   const runId = parseInt(process.env.GITHUB_RUN_ID || "");
   if (Number.isNaN(runId)) return;
-
+  console.log(`2`);
   // Fetch the workflow run
   const workflowRunResponse = await octokit.rest.actions.getWorkflowRun({
     owner,
@@ -63,14 +63,14 @@ exports.NotifyClassroom = async function NotifyClassroom(runnerResults) {
 
   // Filter to find the check run named "Autograding Tests" for the specific workflow run ID
   const checkRun = checkRunsResponse.data.total_count === 1 && checkRunsResponse.data.check_runs[0];
-
+  console.log(`in`);
   if (!checkRun) return;
-
+  console.log(`out`);
   // Update the checkrun, we'll assign the title, summary and text even though we expect
   // the title and summary to be overwritten by GitHub Actions (they are required in this call)
   // We'll also store the total in an annotation to future-proof
   const text = `Points ${totalPoints}/${maxPoints}`;
-  console.log(`hello`);
+  
   await octokit.rest.checks.update({
     owner,
     repo,
