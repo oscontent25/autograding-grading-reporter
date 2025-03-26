@@ -12,9 +12,9 @@ exports.ConsoleResults = function ConsoleResults(runnerResults) {
       const maxScore = getMaxScoreForTest(results)
       // const weight = getTestWeight(maxScore, totalMaxScore);
       const score = getTestScore(results)
-      if (index > 0) {
-        console.log(`${COLORS.magenta}🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀${COLORS.reset}\n`)
-      }
+      // if (index > 0) {
+      //   console.log(`${COLORS.magenta}🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀${COLORS.reset}\n`)
+      // }
 
       console.log(`🔄 Processing: ${runner}`)
       let passedTests = 0
@@ -23,23 +23,23 @@ exports.ConsoleResults = function ConsoleResults(runnerResults) {
       results.tests.forEach((test) => {
         if (test.status === 'pass') {
           passedTests += 1
-          if (test.line_no !== 0) {
-            console.log(`${COLORS.green}✅ ${test.name} - line ${test.line_no}${COLORS.reset}`)
-          } else {
-            console.log(`${COLORS.green}✅ ${test.name}${COLORS.reset}`)
-          }
-        } else if (test.status === 'error') {
-          console.log(`Error: ${test.message || `Failed to run test '${test.name}'`}\n${COLORS.reset}`)
-        } else {
-          if (test.line_no !== 0) {
-            console.log(`${COLORS.red}❌ ${test.name} - line ${test.line_no}${COLORS.reset}`)
-          } else {
-            console.log(`${COLORS.red}❌ ${test.name}${COLORS.reset}`)
-          }
-        }
-        if (test.test_code) {
-          console.log(`Test code:\n${test.test_code}\n`)
-        }
+          // if (test.line_no !== 0) {
+          //   console.log(`${COLORS.green}✅ ${test.name} - line ${test.line_no}${COLORS.reset}`)
+          // } else {
+          //   console.log(`${COLORS.green}✅ ${test.name}${COLORS.reset}`)
+          // }
+        } //else if (test.status === 'error') {
+        //   console.log(`Error: ${test.message || `Failed to run test '${test.name}'`}\n${COLORS.reset}`)
+        // } else {
+        //   if (test.line_no !== 0) {
+        //     console.log(`${COLORS.red}❌ ${test.name} - line ${test.line_no}${COLORS.reset}`)
+        //   } else {
+        //     console.log(`${COLORS.red}❌ ${test.name}${COLORS.reset}`)
+        //   }
+        // }
+        // if (test.test_code) {
+        //   console.log(`Test code:\n${test.test_code}\n`)
+        // }
       })
 
       // Update grand totals
