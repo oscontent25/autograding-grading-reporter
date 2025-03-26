@@ -17,8 +17,18 @@ exports.NotifyClassroom = async function NotifyClassroom(runnerResults) {
     { totalPoints: 0, maxPoints: 0 }
   );
   if (!maxPoints) return;
+  const allTotalPoints = runnerResults.map(({ results }) => {
+    if (!results.max_score) return "000";
+    const totalPoints = results.tests.reduce((sum, { score }) => sum + score, 0);
+    return String(totalPoints).padStart(3, '0');
+  }).join('');
   
-  const text = `Points 123456789012345678901234567890${totalPoints}/${maxPoints}`;
+  const allMaxPoints = runnerResults.map(({ results }) => {
+    if (!results.max_score) return "000";
+    return String(results.max_score).padStart(3, '0');
+  }).join('');
+  
+  const text = `Points ${allTotalPoints}/${allMaxPoints}`;
   const summary = JSON.stringify({ totalPoints, maxPoints })
 
   // create notice annotations with the final result and summary
