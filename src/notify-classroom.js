@@ -18,7 +18,7 @@ exports.NotifyClassroom = async function NotifyClassroom(runnerResults) {
   );
   if (!maxPoints) return;
   
-  const text = `Points ${totalPoints}/${maxPoints}`;
+  const text = `Points 1234567890${totalPoints}/${maxPoints}`;
   const summary = JSON.stringify({ totalPoints, maxPoints })
 
   // create notice annotations with the final result and summary
